@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mana — AI Voice Bot for Mental Health First Conversation Support. A warm, empathetic companion for your emotional wellbeing.">
+    <title>Mana — Mental Health Support</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- Onboarding Screen -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="onboarding-screen" class="screen active">
+        <div class="onboarding-container">
+            <div class="logo-glow"></div>
+            <div class="logo">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="32" r="30" stroke="url(#grad1)" stroke-width="2" fill="none"/>
+                    <path d="M32 18C26 18 20 24 20 32C20 40 26 46 32 46C38 46 44 40 44 32C44 24 38 18 32 18Z" fill="url(#grad2)" opacity="0.3"/>
+                    <path d="M28 28C28 28 30 34 32 34C34 34 36 28 36 28" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="26" cy="28" r="1.5" fill="#B8A9FF"/>
+                    <circle cx="38" cy="28" r="1.5" fill="#B8A9FF"/>
+                    <defs>
+                        <linearGradient id="grad1" x1="0" y1="0" x2="64" y2="64">
+                            <stop offset="0%" stop-color="#A78BFA"/>
+                            <stop offset="100%" stop-color="#7DD3FC"/>
+                        </linearGradient>
+                        <linearGradient id="grad2" x1="20" y1="18" x2="44" y2="46">
+                            <stop offset="0%" stop-color="#A78BFA"/>
+                            <stop offset="100%" stop-color="#7DD3FC"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <h1 class="app-name">Mana</h1>
+            <p class="app-tagline">Your companion for a moment of calm</p>
+            
+            <div class="consent-card glass-card">
+                <p class="consent-text">
+                    I'm an AI companion — not a therapist. I'm here to listen, 
+                    reflect, and suggest small coping steps. For professional help, 
+                    please reach out to a trained counselor.
+                </p>
+                <div class="consent-check">
+                    <input type="checkbox" id="consent-checkbox">
+                    <label for="consent-checkbox">I understand and want to continue</label>
+                </div>
+            </div>
+
+            <div class="language-selector">
+                <h3>Choose your language</h3>
+                <div class="language-options">
+                    <button class="lang-btn active" data-lang="en">
+                        <span class="lang-icon">🇬🇧</span>
+                        <span class="lang-label">English</span>
+                    </button>
+                    <button class="lang-btn" data-lang="hi">
+                        <span class="lang-icon">🇮🇳</span>
+                        <span class="lang-label">हिंदी</span>
+                    </button>
+                    <button class="lang-btn" data-lang="hi-en">
+                        <span class="lang-icon">🌐</span>
+                        <span class="lang-label">Hinglish</span>
+                    </button>
+                </div>
+            </div>
+
+            <button id="start-btn" class="primary-btn" disabled>
+                <span class="btn-text">Begin Conversation</span>
+                <span class="btn-icon">→</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- Chat Screen -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="chat-screen" class="screen">
+        <!-- Header -->
+        <header class="chat-header glass-card">
+            <div class="header-left">
+                <div class="bot-avatar pulse-ring">
+                    <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
+                        <circle cx="32" cy="32" r="30" stroke="url(#grad1h)" stroke-width="2" fill="none"/>
+                        <path d="M28 28C28 28 30 34 32 34C34 34 36 28 36 28" stroke="#A78BFA" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="26" cy="28" r="1.5" fill="#B8A9FF"/>
+                        <circle cx="38" cy="28" r="1.5" fill="#B8A9FF"/>
+                        <defs>
+                            <linearGradient id="grad1h" x1="0" y1="0" x2="64" y2="64">
+                                <stop offset="0%" stop-color="#A78BFA"/>
+                                <stop offset="100%" stop-color="#7DD3FC"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="header-info">
+                    <h2>Mana</h2>
+                    <span class="status-indicator" id="status-text">Listening...</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="emotion-badge" id="emotion-badge" title="Detected emotional tone">
+                    <span class="emotion-icon" id="emotion-icon">😊</span>
+                    <span class="emotion-label" id="emotion-label">Neutral</span>
+                </div>
+                <div class="lang-badge" id="lang-badge">EN</div>
+                <button class="icon-btn" id="crisis-help-btn" title="Crisis Resources">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                        <circle cx="12" cy="17" r="0.5"/>
+                    </svg>
+                </button>
+                <button class="icon-btn" id="end-session-btn" title="End Session">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Messages Area -->
+        <div class="messages-container" id="messages-container">
+            <div class="messages-inner" id="messages-inner">
+                <!-- Messages will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Waveform Visualization -->
+        <div class="waveform-container" id="waveform-container">
+            <canvas id="waveform-canvas"></canvas>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area glass-card">
+            <div class="input-row">
+                <input type="text" id="text-input" class="text-input" 
+                       placeholder="Type a message or press the mic..." autocomplete="off">
+                <button class="send-btn" id="send-btn" title="Send message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                </button>
+                <button class="mic-btn" id="mic-btn" title="Hold to speak">
+                    <div class="mic-pulse"></div>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                        <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- Crisis Resources Modal -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="modal-overlay" id="crisis-modal">
+        <div class="modal glass-card">
+            <div class="modal-header">
+                <h3>🆘 Crisis Resources</h3>
+                <button class="modal-close" id="crisis-modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>If you or someone you know is in crisis, please reach out:</p>
+                <div class="helpline-list">
+                    <a href="tel:9152987821" class="helpline-item">
+                        <span class="helpline-name">iCall</span>
+                        <span class="helpline-number">9152987821</span>
+                    </a>
+                    <a href="tel:18602662345" class="helpline-item">
+                        <span class="helpline-name">Vandrevala Foundation</span>
+                        <span class="helpline-number">1860-2662-345</span>
+                    </a>
+                    <a href="tel:04039246955" class="helpline-item">
+                        <span class="helpline-name">iMind</span>
+                        <span class="helpline-number">040-39246955</span>
+                    </a>
+                </div>
+                <p class="helpline-note">These helplines are available 24/7 and calls are confidential.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
