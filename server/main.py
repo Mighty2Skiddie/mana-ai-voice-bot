@@ -449,6 +449,7 @@ if os.path.isdir(FRONTEND_DIR):
     app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 
 
+@app.head("/")
 @app.get("/", response_class=HTMLResponse)
 async def serve_frontend():
     """Serve the main frontend page."""

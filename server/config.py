@@ -33,8 +33,8 @@ class Settings(BaseSettings):
     # --- Sarvam AI Endpoints ---
     sarvam_stt_url: str = "https://api.sarvam.ai/speech-to-text-translate"
     sarvam_tts_url: str = "https://api.sarvam.ai/text-to-speech"
-    sarvam_tts_speaker: str = "meera"
-    sarvam_tts_model: str = "bulbul:v1"
+    sarvam_tts_speaker: str = "anushka"
+    sarvam_tts_model: str = "bulbul:v2"
 
     # --- Latency Targets (ms) ---
     stt_target_ms: int = 400
