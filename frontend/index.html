@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mana — AI Voice Bot for Mental Health First Conversation Support. A warm, empathetic companion for your emotional wellbeing.">
+    <meta name="description"
+        content="Mana — AI Voice Bot for Mental Health First Conversation Support. A warm, empathetic companion for your emotional wellbeing.">
     <title>Mana — Mental Health Support</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?v=2">
 </head>
+
 <body>
     <!-- ═══════════════════════════════════════════════ -->
     <!-- Onboarding Screen -->
@@ -19,30 +24,32 @@
             <div class="logo-glow"></div>
             <div class="logo">
                 <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                    <circle cx="32" cy="32" r="30" stroke="url(#grad1)" stroke-width="2" fill="none"/>
-                    <path d="M32 18C26 18 20 24 20 32C20 40 26 46 32 46C38 46 44 40 44 32C44 24 38 18 32 18Z" fill="url(#grad2)" opacity="0.3"/>
-                    <path d="M28 28C28 28 30 34 32 34C34 34 36 28 36 28" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="26" cy="28" r="1.5" fill="#B8A9FF"/>
-                    <circle cx="38" cy="28" r="1.5" fill="#B8A9FF"/>
+                    <circle cx="32" cy="32" r="30" stroke="url(#grad1)" stroke-width="2" fill="none" />
+                    <path d="M32 18C26 18 20 24 20 32C20 40 26 46 32 46C38 46 44 40 44 32C44 24 38 18 32 18Z"
+                        fill="url(#grad2)" opacity="0.3" />
+                    <path d="M28 28C28 28 30 34 32 34C34 34 36 28 36 28" stroke="url(#grad1)" stroke-width="2"
+                        stroke-linecap="round" />
+                    <circle cx="26" cy="28" r="1.5" fill="#B8A9FF" />
+                    <circle cx="38" cy="28" r="1.5" fill="#B8A9FF" />
                     <defs>
                         <linearGradient id="grad1" x1="0" y1="0" x2="64" y2="64">
-                            <stop offset="0%" stop-color="#A78BFA"/>
-                            <stop offset="100%" stop-color="#7DD3FC"/>
+                            <stop offset="0%" stop-color="#A78BFA" />
+                            <stop offset="100%" stop-color="#7DD3FC" />
                         </linearGradient>
                         <linearGradient id="grad2" x1="20" y1="18" x2="44" y2="46">
-                            <stop offset="0%" stop-color="#A78BFA"/>
-                            <stop offset="100%" stop-color="#7DD3FC"/>
+                            <stop offset="0%" stop-color="#A78BFA" />
+                            <stop offset="100%" stop-color="#7DD3FC" />
                         </linearGradient>
                     </defs>
                 </svg>
             </div>
             <h1 class="app-name">Mana</h1>
             <p class="app-tagline">Your companion for a moment of calm</p>
-            
+
             <div class="consent-card glass-card">
                 <p class="consent-text">
-                    I'm an AI companion — not a therapist. I'm here to listen, 
-                    reflect, and suggest small coping steps. For professional help, 
+                    I'm an AI companion — not a therapist. I'm here to listen,
+                    reflect, and suggest small coping steps. For professional help,
                     please reach out to a trained counselor.
                 </p>
                 <div class="consent-check">
@@ -85,14 +92,15 @@
             <div class="header-left">
                 <div class="bot-avatar pulse-ring">
                     <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
-                        <circle cx="32" cy="32" r="30" stroke="url(#grad1h)" stroke-width="2" fill="none"/>
-                        <path d="M28 28C28 28 30 34 32 34C34 34 36 28 36 28" stroke="#A78BFA" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="26" cy="28" r="1.5" fill="#B8A9FF"/>
-                        <circle cx="38" cy="28" r="1.5" fill="#B8A9FF"/>
+                        <circle cx="32" cy="32" r="30" stroke="url(#grad1h)" stroke-width="2" fill="none" />
+                        <path d="M28 28C28 28 30 34 32 34C34 34 36 28 36 28" stroke="#A78BFA" stroke-width="2"
+                            stroke-linecap="round" />
+                        <circle cx="26" cy="28" r="1.5" fill="#B8A9FF" />
+                        <circle cx="38" cy="28" r="1.5" fill="#B8A9FF" />
                         <defs>
                             <linearGradient id="grad1h" x1="0" y1="0" x2="64" y2="64">
-                                <stop offset="0%" stop-color="#A78BFA"/>
-                                <stop offset="100%" stop-color="#7DD3FC"/>
+                                <stop offset="0%" stop-color="#A78BFA" />
+                                <stop offset="100%" stop-color="#7DD3FC" />
                             </linearGradient>
                         </defs>
                     </svg>
@@ -110,14 +118,14 @@
                 <div class="lang-badge" id="lang-badge">EN</div>
                 <button class="icon-btn" id="crisis-help-btn" title="Crisis Resources">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                        <circle cx="12" cy="17" r="0.5"/>
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                        <circle cx="12" cy="17" r="0.5" />
                     </svg>
                 </button>
                 <button class="icon-btn" id="end-session-btn" title="End Session">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 6L6 18M6 6l12 12"/>
+                        <path d="M18 6L6 18M6 6l12 12" />
                     </svg>
                 </button>
             </div>
@@ -138,20 +146,20 @@
         <!-- Input Area -->
         <div class="input-area glass-card">
             <div class="input-row">
-                <input type="text" id="text-input" class="text-input" 
-                       placeholder="Type a message or press the mic..." autocomplete="off">
+                <input type="text" id="text-input" class="text-input" placeholder="Type a message or press the mic..."
+                    autocomplete="off">
                 <button class="send-btn" id="send-btn" title="Send message">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
                     </svg>
                 </button>
                 <button class="mic-btn" id="mic-btn" title="Hold to speak">
                     <div class="mic-pulse"></div>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                        <line x1="12" y1="19" x2="12" y2="23"/>
-                        <line x1="8" y1="23" x2="16" y2="23"/>
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                        <line x1="12" y1="19" x2="12" y2="23" />
+                        <line x1="8" y1="23" x2="16" y2="23" />
                     </svg>
                 </button>
             </div>
@@ -188,6 +196,7 @@
         </div>
     </div>
 
-    <script src="/static/script.js"></script>
+    <script src="/static/script.js?v=2"></script>
 </body>
+
 </html>

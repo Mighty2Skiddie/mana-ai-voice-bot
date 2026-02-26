@@ -114,8 +114,14 @@ async def process_message(
     start_time = time.time()
 
     # Layer 1: Language Detection
+    print(f"[DEBUG] === New Request ===")
+    print(f"[DEBUG] Input text: {text[:60]}...")
+    print(f"[DEBUG] language_hint from frontend: '{language_hint}'")
+
     language = detect_language(text, stt_tag=language_hint)
     lang_code = language.value
+
+    print(f"[DEBUG] detect_language() returned: {language} (lang_code='{lang_code}')")
 
     # Layer 2: Safety Check — BEFORE anything else
     safety = check_safety(text, language=lang_code)
@@ -158,6 +164,8 @@ async def process_message(
     history = ConversationManager.get_history(session_id, max_turns=20)
     system_prompt = get_system_prompt(language=lang_code, context_summary=context_summary)
 
+    print(f"[DEBUG] get_system_prompt() called with language='{lang_code}'")
+
     # Check if this is the first turn — include opening
     if len([t for t in session.turns if t.role == "user"]) == 1:
         # First user message — prepend opening to assistant context
@@ -169,6 +177,7 @@ async def process_message(
 
     # Add language instruction to ensure correct language response
     lang_instruction = get_language_instruction(language)
+    print(f"[DEBUG] Language instruction: {lang_instruction[:80]}...")
     messages.append({
         "role": "system",
         "content": f"Language instruction for this turn: {lang_instruction}"

@@ -169,12 +169,22 @@ def get_system_prompt(language: str = "en", context_summary: str = "") -> str:
     prompt = SYSTEM_PROMPT
 
     # Add language-specific instruction
-    if language in ("hi", "hi-en"):
+    if language == "hi":
         prompt += (
             "\n\n# CURRENT LANGUAGE INSTRUCTION\n"
-            "The user is speaking in Hindi/Hinglish. "
-            "Respond in the same language style they are using. "
-            "Use natural Romanized Hindi or Hinglish as appropriate."
+            "The user has chosen HINDI mode. You MUST respond ONLY in Romanized Hindi. "
+            "Do NOT use any English words at all — not even common ones like 'stress', 'feel', 'work', 'office'. "
+            "Use their Hindi equivalents: 'tanaav', 'mehsoos', 'kaam', 'daftar'. "
+            "Write Hindi words in Roman script (Latin letters), NOT in Devanagari. "
+            "Example: 'Main samajh sakta hoon, yeh bohot mushkil hai. Abhi sabse zyada bhaari kya lag raha hai?'"
+        )
+    elif language == "hi-en":
+        prompt += (
+            "\n\n# CURRENT LANGUAGE INSTRUCTION\n"
+            "The user has chosen HINGLISH mode. Respond in a natural mix of Hindi and English "
+            "as spoken by young urban Indians. Mix freely — some sentences in English, some in Hindi, "
+            "some blended. Mirror the user's mixing style. "
+            "Example: 'Yaar I understand, yeh sach mein bohot heavy hai. Kya specific cheez hai jo stress de rahi hai?'"
         )
     else:
         prompt += (

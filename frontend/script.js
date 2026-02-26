@@ -87,6 +87,7 @@ function initOnboarding() {
             dom.langBtns.forEach((b) => b.classList.remove('active'));
             btn.classList.add('active');
             state.language = btn.dataset.lang;
+            console.log('[Onboarding] Language selected:', state.language);
         });
     });
 
@@ -182,6 +183,7 @@ async function processUserMessage(text) {
                 language: state.language,
             }),
         });
+        console.log('[Chat] Sent with language:', state.language);
 
         const data = await res.json();
         removeTypingIndicator();
@@ -189,11 +191,9 @@ async function processUserMessage(text) {
         // Update emotion display
         updateEmotion(data.emotion);
 
-        // Update language if server detected different
-        if (data.language && data.language !== state.language) {
-            state.language = data.language;
-            updateLangBadge();
-        }
+        // NOTE: Do NOT override state.language from server response.
+        // The user chose their language on the onboarding screen — trust that.
+        // Language badge stays as user selected.
 
         // Handle crisis
         if (data.is_crisis) {
@@ -372,11 +372,10 @@ async function processAudio(audioBlob) {
         if (sttData.transcript) {
             addMessage('user', sttData.transcript);
 
-            // Update language based on STT detection
-            if (sttData.language) {
-                state.language = sttData.language;
-                updateLangBadge();
-            }
+            // NOTE: Do NOT override state.language here.
+            // The user explicitly chose their language on the onboarding screen.
+            // STT detection can be unreliable (e.g., Whisper detects Hindi as Urdu).
+            // We trust the user's onboarding choice throughout the session.
 
             await processUserMessage(sttData.transcript);
         } else {

@@ -104,9 +104,17 @@ def detect_language(text: str, stt_tag: str = "") -> Language:
     # 1. Trust STT tag if provided
     if stt_tag:
         stt_tag_lower = stt_tag.lower().strip()
+        # English variants
         if stt_tag_lower in ("en", "english"):
             return Language.ENGLISH
-        elif stt_tag_lower in ("hi", "hindi"):
+        # Hindi variants — Whisper often detects Hindi as "urdu" or "hindustani"
+        # because spoken Hindi and Urdu are mutually intelligible
+        elif stt_tag_lower in (
+            "hi", "hindi", "hin",
+            "ur", "urdu",           # Whisper commonly returns this for Hindi
+            "hindustani",           # Another Whisper variant
+            "hi-in", "hi_in",       # Locale variants
+        ):
             return Language.HINDI
         elif stt_tag_lower in ("hi-en", "hinglish", "hi-eng"):
             return Language.HINGLISH
@@ -171,13 +179,15 @@ def get_language_instruction(language: Language) -> str:
         return "Respond in English. Use warm, conversational English with natural contractions."
     elif language == Language.HINDI:
         return (
-            "Respond in Hindi (Romanized/Hinglish script). "
-            "Use natural Hindi as spoken by young adults in India. "
-            "Example: 'Main samajh sakta hoon, yeh bohot mushkil hai.'"
+            "STRICT RULE: Respond ONLY in Romanized Hindi. "
+            "Do NOT use ANY English words — not even 'stress', 'feel', 'office', 'work'. "
+            "Use Hindi equivalents: 'tanaav', 'mehsoos', 'daftar', 'kaam'. "
+            "Write in Roman script (Latin letters), NOT Devanagari. "
+            "Example: 'Main samajh sakta hoon, yeh bohot mushkil hai. Aapko sabse zyada bhaari kya lag raha hai?'"
         )
     else:  # HINGLISH
         return (
             "Respond in Hinglish — a natural mix of Hindi and English as spoken by young Indians. "
-            "Mirror the user's mixing style. "
-            "Example: 'Yaar I understand, yeh sach mein bohot heavy hai.'"
+            "Mirror the user's mixing style. Freely blend both languages in each sentence. "
+            "Example: 'Yaar I understand, yeh sach mein bohot heavy hai. What's bothering you the most?'"
         )
