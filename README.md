@@ -1,7 +1,7 @@
 # 🧠 Mana — AI Voice Bot for Mental Health First Conversation Support
 
 > A voice-first AI companion providing empathetic first-line mental health support in **English**, **Hindi**, and **Hinglish** using a hybrid **OpenAI + Sarvam AI** architecture.
-
+Demo - https://mana-ai-voice-bot.onrender.com/
 ---
 
 ## 🌟 Key Features
